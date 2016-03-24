@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bucket">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Serverside scroller</title>
+
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container" ng-controller="page">
+    <h1>Scrollable table</h1> on the <a href="http://services.odata.org/V4/Northwind/Northwind.svc/Customers">Customers Odata collection</a>
+    <p>Read more in the <a href="https://github.com/jsheperd/serversideScrolledTable/blob/master/README.md">README.md</a></p>
+    <p><input type="checkbox" ng-model="showStatus"> Show status 
+    <strong ng-show="showStatus" >The pos is: {{skip}}, status is {{status}}, count: {{count}}</strong>
+    </p>
+    <input type="range" min="0" ng-max="count" ng-model=skip autofocus>
+    <table class="table table-striped">
+      <tr ng-repeat="c in customers">
+        <td>{{c.CompanyName}}</td>
+        <td>{{c.ContactName}}</td>
+        <td>{{c.ContactTitle}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.min.js"></script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
