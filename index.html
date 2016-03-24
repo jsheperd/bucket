@@ -15,9 +15,18 @@
   <div class="container" ng-controller="main">
     <h1 class="well">Bucket hidrology model</h1>
     <div class="col-md-6">
-      <p>
-        <input type="range" min="10" max="100" value="30">
-      </p>
+      <div class="input-group">
+        <span class="input-group-addon" id="start">Start:</span>
+        <input type="range" min="10" max="100" step="10" ng-model="start" aria-describedby="start">
+        <span class="input-group-addon">{{start}} mm</span>
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon" id="size">Size:</span>
+        <input type="range" min="10" max="100" step="10" ng-model="size" aria-describedby="size">
+        <span class="input-group-addon">{{size}} mm</span>
+      </div>
+      <hr>
     </div>
     <div class="col-md-6">
         <uib-tabset active="active">
