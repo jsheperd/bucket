@@ -25,7 +25,7 @@
       <div class="input-group">
         <span class="input-group-addon" id="size">Size:</span>
         <input type="range" min="10" max="100" step="10" ng-model="size" aria-describedby="size">
-        <span class="input-group-addon">{{size}}</span>
+        <span class="input-group-addon" ng-bind="size"></span>
         <span class="input-group-addon">mm</span>
       </div>
       <hr>
