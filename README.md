@@ -1,3 +1,3 @@
 # bucket 
 
-[Preview](http://htmlpreview.github.io/?https://github.com/jsheperd/bucket/blob/master/index.html "Bucket")
+[Preview](http://htmlpreview.github.io/?https://raw.github.com/jsheperd/bucket/blob/master/index.html "Bucket")
