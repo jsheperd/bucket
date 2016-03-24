@@ -10,13 +10,29 @@
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
-
 </head>
 
 <body>
   <div class="container" ng-controller="main">
-    <h1>Bucket for {{name}}</h1>
-    <button class="btn btn-default">Push me</button>
+    <h1>Bucket hidrology model</h1>
+    <div class="container well">
+      <div class="col-md-6">
+        Sliders
+      </div>
+    </div>
+    <div class="container well">
+      <div class="col-md-6">
+        <uib-tabset active="active">
+          <uib-tab index="0" heading="data">
+            <p>Data</p>
+          </uib-tab>
+
+          <uib-tab index="1" heading="code">
+            <p>Code here</p>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
