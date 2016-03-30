@@ -30,7 +30,7 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
     });
     //console.table(t);
     
-    $scope.xAxisTickFormatFunction = function(d3) {
+    $scope.xAxisTickFormatFunction = function() {
        return function(d){
          console.log('d:', d);
         return d3.time.format('%x')(new Date(d));
