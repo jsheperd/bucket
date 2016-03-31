@@ -62,8 +62,9 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
     });
 
 
-    $scope.$apply();
-    setTimeout($scope.api.refresh, 2000);
+    setTimeout(function() {
+      $scope.$apply();
+      $scope.api.refresh();}, 1000);
   });
 
   $scope.xAxisTickFormatFunction = function () {
@@ -82,8 +83,8 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
   $scope.options = {
     chart: {
       type: 'lineChart',
-      height: 350,
-      width: 550,
+      height: 450,
+      //width: 550,
       margin: {
         left: 80,
         right: 10,
