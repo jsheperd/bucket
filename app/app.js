@@ -20,7 +20,6 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
     var format_day = d3.time.format('%Y.%m.%d');
     //console.log($scope.met_data);
 
-    var t;
     var t = $scope.met_data.map(function (val, idex, arr) {
       return {
         x: format_day.parse(val.Date),
@@ -34,20 +33,36 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
         y: val.P
       };
     });
-    //console.table(t);
 
-
-    $scope.chart_data.push({
-      key: "Temperature",
-      color: "#2255aa",
-      values: t
+    var w = $scope.met_data.map(function (val, idex, arr) {
+      return {
+        x: format_day.parse(val.Date),
+        y: val.W
+      };
     });
+
+
     $scope.chart_data.push({
       key: "Monthly P",
       color: "lightblue",
       area: true,
       values: p
     });
+
+    $scope.chart_data.push({
+      key: "Temperature",
+      color: "#2255aa",
+      values: t
+    });
+
+    $scope.chart_data.push({
+      key: "Monthly W",
+      color: "green",
+      values: w
+    });
+
+
+
     $scope.$apply();
     var ref = $scope.api.refresh;
     setTimeout(ref, 2000);
@@ -96,15 +111,15 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
           return d3.format(',.1f')(d);
         }
       },
-       zoom: {
-                    enabled: true,
-                    scaleExtent: [1, 10],
-                    useFixedDomain: false,
-                    useNiceScale: false,
-                    horizontalOff: false,
-                    verticalOff: true,
-                    unzoomEventType: 'dblclick.zoom'
-                }
+      zoom: {
+        enabled: true,
+        scaleExtent: [1, 10],
+        useFixedDomain: false,
+        useNiceScale: false,
+        horizontalOff: false,
+        verticalOff: true,
+        unzoomEventType: 'dblclick.zoom'
+      }
     }
   };
 
