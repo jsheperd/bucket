@@ -22,42 +22,87 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
 
     var t;
     var t = $scope.met_data.map(function (val, idex, arr) {
-      return { x: format_day.parse(val.Date), y: val.T};
+      return {
+        x: format_day.parse(val.Date),
+        y: val.T
+      };
     });
 
     var p = $scope.met_data.map(function (val, idex, arr) {
-      return { x: format_day.parse(val.Date), y: val.P};
+      return {
+        x: format_day.parse(val.Date),
+        y: val.P
+      };
     });
     //console.table(t);
 
-    $scope.xAxisTickFormatFunction = function () {
-      return function (d) {
-        console.log('d:', d);
-        return d3.time.format('%x')(new Date(d));
-      }
-    }
 
-    $scope.yAxisTickFormatFunction = function () {
-      return function (d) {
-        return d;
-      }
-    };
-
-    $scope.chart_data.push({ key: "Temperature", color: "#2255aa", values: t });
-    $scope.chart_data.push({ key: "P",           color: "lightblue", values: p   });
+    $scope.chart_data.push({
+      key: "Temperature",
+      color: "#2255aa",
+      values: t
+    });
+    $scope.chart_data.push({
+      key: "Monthly P",
+      color: "lightblue",
+      values: p
+    });
 
     $scope.$apply();
   });
+
+  $scope.xAxisTickFormatFunction = function () {
+    return function (d) {
+      return d3.time.format('%x')(new Date(d));
+    }
+  }
+
+  $scope.yAxisTickFormatFunction = function () {
+    return function (d) {
+      return d;
+    }
+  };
+
 
   $scope.options = {
     chart: {
       type: 'lineChart',
       height: 350,
       width: 550,
-      legend: false,
-      x: function (d) { return d.x; },
-      y: function (d) { return d.y; },
-      zoom: true,
+      margin: {
+        left: 80,
+        right: 10,
+        top: 20,
+        bottom: 120
+      },
+      duration: 500,
+      x: function (d) {
+        return d.x;
+      },
+      y: function (d) {
+        return d.y;
+      },
+      xAxis: {
+        tickFormat: function (d) {
+          return d3.time.format('%x')(new Date(d))
+        },
+        rotateLabels: 60,
+        showMaxMin: true
+      },
+      yAxis: {
+        tickFormat: function (d) {
+          return d3.format(',.1f')(d);
+        }
+      },
+       zoom: {
+                    enabled: true,
+                    scaleExtent: [1, 10],
+                    useFixedDomain: false,
+                    useNiceScale: false,
+                    horizontalOff: false,
+                    verticalOff: true,
+                    unzoomEventType: 'dblclick.zoom'
+                }
     }
   };
 
