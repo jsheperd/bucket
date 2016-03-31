@@ -57,15 +57,13 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
 
     $scope.chart_data.push({
       key: "Monthly W",
-      color: "green",
+      color: "lightgreen",
       values: w
     });
 
 
-
     $scope.$apply();
-    var ref = $scope.api.refresh;
-    setTimeout(ref, 2000);
+    setTimeout($scope.api.refresh, 2000);
   });
 
   $scope.xAxisTickFormatFunction = function () {
