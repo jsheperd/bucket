@@ -9,7 +9,7 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
   $scope.met_data = {};
   $scope.thorntwaite_bucket = thorntwaite_bucket;
 
-  thorntwaite_bucket.init(46.9, 150, "Szoce", 0, 150, 225);
+  thorntwaite_bucket.init(46.9, 150, "Szőce", 0, 150, 225);
 
   $scope.chart_data = [];
 
@@ -45,10 +45,12 @@ app.controller('main', function ($scope, $http, thorntwaite, thorntwaite_bucket)
     $scope.chart_data.push({
       key: "Monthly P",
       color: "lightblue",
+      area: true,
       values: p
     });
-
     $scope.$apply();
+    var ref = $scope.api.refresh;
+    setTimeout(ref, 2000);
   });
 
   $scope.xAxisTickFormatFunction = function () {
