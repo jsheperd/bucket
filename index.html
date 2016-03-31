@@ -20,9 +20,9 @@
 </head>
 
 <body>
-  <div ng-controller="main" Cclass="container">
+  <div ng-controller="main" class="container">
     <h1>Bucket hidrology model</h1>
-    <div class="col-md-6">
+<!--    <div class="col-md-6">
       <div class="input-group">
         <span class="input-group-addon" id="start">Start:</span>
         <input type="range" min="0" max="100" step="10" ng-model="start" aria-describedby="start">
@@ -37,58 +37,48 @@
         <span class="input-group-addon">mm</span>
       </div>
       <hr>
-    </div>
+    </div>-->
+    
+    <nvd3 options="options" data="chart_data">
+      <svg></svg>
+    </nvd3>
+  
     <div class="col-md-6" ng-cloak>
-      <uib-tabset active="active">
-        <uib-tab index="0" heading="Data">
-          <div>
-            <table class="table table-hover" ng-hide="!met_data">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Temp C</th>
-                  <th>Precip mm</th>
-                  <th>ET</th>
-                  <th>PET</th>
-                </tr>
-              </thead>
-              <tboby>
-                <h2>{{thorntwaite_bucket.location_name}}</h2>
-                <tr ng-repeat="row in met_data">
-                  <td>{{row.Date}}</td>
-                  <td>{{row.T | number:2 }}</td>
-                  <td>{{row.P | number:2 }}</td>
-                  <td>{{row.ET | number:2 }}</td>
-                  <td>{{row.PET | number:2 }}</td>
+      <div>
+        <table class="table table-hover" ng-hide="!met_data">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Temp C</th>
+              <th>Precip mm</th>
+              <th>PET</th>
+              <th>ET</th>
+              <th>W</th>              
+            </tr>
+          </thead>
+          <tboby>
+            <h2>{{thorntwaite_bucket.location_name}}</h2>
+            <tr ng-repeat="row in met_data">
+              <td>{{row.Date}}</td>
+              <td>{{row.T | number:2 }}</td>
+              <td>{{row.P | number:2 }}</td>
+              <td>{{row.PET | number:2 }}</td>
+              <td>{{row.ET | number:2 }}</td>
+              <td>{{row.W | number:2 }}</td>
 
-                </tr>
-              </tboby>
-            </table>
-          </div>
-        </uib-tab>
-        <uib-tab index="1" heading="Chart">
-          <nvd3-line-chart 
-           data="chart_data" 
-           id="exampleId" 
-           xAxisTickFormat="xAxisTickFormatFunction()" 
-           yAxisTickFormat="yAxisTickFormatFunction()" 
-           width="550" 
-           height="350" 
-           showXAxis="true" 
-           showYAxis="true"
-           class="with-3d-shadow with-transitions" 
-           config="{refreshDataOnly: true, deepWatchData: true}">
-            <svg></svg>
-          </nvd3-line-chart>
-        </uib-tab>
-      </uib-tabset>
+            </tr>
+          </tboby>
+        </table>
+      </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.5/ui-bootstrap-tpls.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/angularjs.nvd3-directives/v0.0.7/angularjs-nvd3-directives.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.5/angular-nvd3.min.js"></script>
+  
+  
   <script type="text/javascript" src="nv.d3.js"></script>
   <script type="text/javascript" src="app/app.js"></script>
   <script type="text/javascript" src="app/thorntwaite.js"></script>
